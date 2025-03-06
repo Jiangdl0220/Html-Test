@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小蒋待办管理器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+    <div class="cyber-container">
+        <h1 class="neon-title">小蒋待办</h1>
+        
+        <div class="date-picker">
+            <input type="date" id="dateInput" class="cyber-input">
+        </div>
+
+        <div class="add-task">
+            <input type="text" id="taskInput" class="cyber-input" placeholder="输入新任务...">
+            <button id="addBtn" class="cyber-button">➕ 创建任务</button>
+        </div>
+
+        <div class="tab-buttons">
+            <button class="cyber-button tab-button active" data-tab="pending">待完成</button>
+            <button class="cyber-button tab-button" data-tab="completed">已完成</button>
+        </div>
+        <div class="task-list" id="taskList"></div>
+    </div>
+</div>
+
+    <script src="app.js"></script>
+</body>
+</html>

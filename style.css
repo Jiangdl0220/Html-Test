@@ -1,0 +1,209 @@
+/* 深空背景主题 */
+body {
+    background: #0a0a1a url('9f43f5cf-19d6-4ac5-9fba-f4f10451de7b.jpeg') no-repeat center center/cover;
+    color: #00f7ff;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 修改标题样式 */
+.neon-title {
+    font-family: '华文行楷', cursive;
+    font-size: 2.5em;
+    text-align: center;
+    text-shadow: none;
+    animation: none;
+    margin: 20px 0;
+}
+
+/* 调整选项卡激活状态 */
+.cyber-button.tab-button.active {
+    background: #4d8cff;
+    border: 2px solid #1a4d8c;
+    box-shadow: none;
+    animation: none;
+}
+
+.cyber-button.tab-button:hover {
+    transform: none;
+    box-shadow: none;
+    background-color: #1a4d8c;
+}
+
+.cyber-container {
+    max-width: 800px;
+    height: 700px;
+    margin: 0 auto;
+    border: 2px solid #4d4dff;
+    border-radius: 8px;
+    padding: 20px;
+    background: rgba(0, 0, 30, 0.9);
+    box-shadow: 0 0 20px rgba(77, 77, 255, 0.3);
+    overflow-y: auto;
+}
+
+.cyber-input {
+    background: #000033;
+    border: 1px solid #4d4dff;
+    color: #00ffff;
+    padding: 10px;
+    margin: 5px;
+    width: 180px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.cyber-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #4d4dff;
+}
+
+.cyber-button {
+    background: linear-gradient(45deg, #0011ff, #00ffff);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s;
+    width: 160px;
+}
+
+.cyber-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ffff;
+}
+
+.cyber-button.tab-button.active {
+    background: linear-gradient(45deg, #00ff00, #00ffff);
+    box-shadow: 0 0 20px #00ff00;
+    border: 1px solid #00ffff;
+    animation: neon-pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes neon-pulse {
+    from { box-shadow: 0 0 10px #00ff00; }
+    to { box-shadow: 0 0 30px #00ff00, 0 0 15px #00ffff; }
+}
+
+.cyber-button.tab-button {
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.task-list {
+    margin-top: 20px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    margin: 8px 0;
+    background: rgba(0, 34, 68, 0.3);
+    border: 1px solid #0044ff;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+.date-display {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.delete-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    width: 120px;
+    flex-shrink: 0;
+}
+.task-item:hover {
+    transform: translateX(10px);
+    background: rgba(0, 68, 102, 0.4);
+}
+
+.task-item.completed {
+    opacity: 0.5;
+    border-color: #00ff00;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+}
+
+/* 浅色科幻主题 */
+body {
+    background: #f0f0f5 url('9f43f5cf-19d6-4ac5-9fba-f4f10451de7b.jpeg') no-repeat center center/cover;
+    color: #1a1a4a;
+}
+
+.cyber-container {
+    background: rgba(255, 255, 255, 0.95) url('背景2.jpeg') no-repeat center center/cover;
+    border-color: #4d8cff;
+}
+
+.cyber-input {
+    background: #ffffff;
+    border-color: #99ccff;
+    color: #334d4d;
+    width: 180px;
+}
+
+.cyber-button {
+    background: linear-gradient(45deg, #4d8cff, #4df2ff);
+    width: 160px;
+}
+
+.delete-btn {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    width: 120px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.task-item {
+    background: rgba(240, 248, 255, 0.9);
+    border-color: #b3d9ff;
+}
+
+@keyframes neon-glow {
+    from { text-shadow: 0 0 10px #4d8cff; }
+    to { text-shadow: 0 0 20px #4d8cff; }
+}
+
+/* 超时样式 */
+.timeout-label {
+    color: #ff0000;
+    font-size: 0.8em;
+    background: rgba(255, 0, 0, 0.2);
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+.date-display {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.current-date,
+.task-date {
+    font-size: 0.9em;
+    color: #4d8cff;
+}
