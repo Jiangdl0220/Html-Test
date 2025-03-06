@@ -109,6 +109,12 @@ document.querySelectorAll('.tab-button').forEach(button => {
     localStorage.removeItem('cyberTasks');
     renderTasks();
 })();
+// 删除以下自动清除代码：
+// (function() {
+//     tasks = {};
+//     localStorage.removeItem('cyberTasks');
+//     renderTasks();
+// })();
 });
 
 // Clear all tasks
