@@ -11,7 +11,7 @@ body {
 /* 修改标题样式 */
 .neon-title {
     font-family: '华文行楷', cursive;
-    font-size: 2.5em;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     text-align: center;
     text-shadow: none;
     animation: none;
@@ -33,8 +33,10 @@ body {
 }
 
 .cyber-container {
-    max-width: 800px;
-    height: 700px;
+    max-width: 90vw;
+    width: 100%;
+    min-height: 700px;
+    height: auto;
     margin: 0 auto;
     border: 2px solid #4d4dff;
     border-radius: 8px;
@@ -143,6 +145,34 @@ body {
 
 .task-item.completed .task-text {
     text-decoration: line-through;
+}
+
+@media (max-width: 768px) {
+  .cyber-container {
+    max-width: 95%;
+    padding: 15px;
+  }
+  
+  .add-task {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cyber-input,
+  .cyber-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .date-display {
+    flex-direction: column;
+    gap: 5px;
+  }
 }
 
 /* 浅色科幻主题 */

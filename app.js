@@ -1,5 +1,51 @@
 // 初始化任务数据和本地存储
-let tasks = JSON.parse(localStorage.getItem('cyberTasks')) || {}
+let tasks = JSON.parse(localStorage.getItem('cyberTasks')) || {};
+
+// 拖放功能实现
+let draggedId = null;
+
+function handleDragStart(e, id) {
+  draggedId = id;
+  e.target.style.opacity = '0.5';
+  e.target.style.border = '2px solid #00ffff';
+}
+
+function handleDragOver(e) {
+  e.preventDefault();
+  e.target.style.backgroundColor = 'rgba(77, 140, 255, 0.3)';
+}
+
+function handleDrop(e, targetId, taskDate) {
+  e.preventDefault();
+  const currentDate = taskDate;
+  // 精确查找源任务和目标任务
+  let draggedTask, targetTask;
+  for (const date in tasks) {
+    const foundDragged = tasks[date].find(t => t.id === draggedId);
+    const foundTarget = tasks[date].find(t => t.id === targetId);
+    if (foundDragged) draggedTask = foundDragged;
+    if (foundTarget) targetTask = foundTarget;
+  }
+
+  if (draggedTask && targetTask) {
+    // 交换并更新排序值
+    const tempOrder = draggedTask.order;
+    draggedTask.order = targetTask.order;
+    targetTask.order = tempOrder;
+    
+    // 确保更新原始数据
+    tasks[draggedTask.date] = tasks[draggedTask.date].map(t => 
+      t.id === draggedTask.id ? draggedTask : t
+    );
+    tasks[targetTask.date] = tasks[targetTask.date].map(t => 
+      t.id === targetTask.id ? targetTask : t
+    );
+    
+    saveTasks();
+    renderTasks();
+  }
+  e.target.style.backgroundColor = '';
+}
 const currentDate = new Date().toISOString().split('T')[0]
 let currentTab = 'pending';
 
@@ -23,7 +69,8 @@ function addTask() {
         text,
         date,
         completed: false,
-        created: new Date().toISOString()
+        created: new Date().toISOString(),
+        order: tasks[date] ? tasks[date].length * 100 : 0
     }
 
     tasks[date] = tasks[date] || []
@@ -53,17 +100,23 @@ function saveTasks() {
 
 // 任务渲染
 function renderTasks() {
-    const dailyTasks = Object.values(tasks).flat().filter(task => {
-        if (currentTab === 'pending') return !task.completed
-        if (currentTab === 'completed') return task.completed
-        return true
-    })
+    const dailyTasks = Object.values(tasks).flat()
+        .filter(task => {
+            if (currentTab === 'pending') return !task.completed
+            if (currentTab === 'completed') return task.completed
+            return true
+        })
+        .sort((a, b) => a.order - b.order)
     
     const currentDateObj = new Date(dateInput.value)
     const today = new Date().setHours(0,0,0,0)
     
     taskList.innerHTML = dailyTasks.map((task, index) => `
-        <div class="task-item ${task.completed ? 'completed' : ''}">
+        <div class="task-item ${task.completed ? 'completed' : ''}" 
+             draggable="true" 
+             ondragstart="handleDragStart(event, ${task.id})" 
+             ondragover="handleDragOver(event)" 
+             ondrop="handleDrop(event, ${task.id}, '${task.date}')">
             <div class="task-content">
                 <input type="checkbox" 
                        class="task-checkbox" 
